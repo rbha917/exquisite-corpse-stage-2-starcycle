@@ -56,9 +56,9 @@ the cycle goes as follows:
 - it's just a different type of lifecycle and explores the cosmos beyond us
 
 ### 🟨 Stage 2
-- Name/Alias:
-- Github account:
-- Published webpage for stage 2:
+- Name/Alias: Roshni Bhatti
+- Github account: 
+- Published webpage for stage 2: https://rbha917.github.io/exquisite-corpse-stage-2-starcycle/ 
 
 *... comments to be added here*
 
