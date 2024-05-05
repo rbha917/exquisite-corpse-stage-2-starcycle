@@ -27,18 +27,19 @@ function preload() {
 }
 
 function newLine(){
+  resetCanvas();
   userLine = input.value(); //define userLine at top//
   input.value(''); //clears input box//
   answers.push(userLine);
 
   let words = RiTa.tokenize(userLine);//creates an array from the inputs//
 	response = ''; //clears input, define response variable at top//
-
+  setInterval(drawStar, 20);
 	for (x = 0; x < words.length; x++){
     let word = words[x]    
-		if(RiTa.isNoun(word)){
+		if(RiTa.isVerb(word)){
 			image(nebula, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
-    } else if(RiTa.Verb(word)) {
+    } else if(RiTa.isNoun(word)) {
       image(mss, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
 		} else if(RiTa.isAdverb(word)){
       image(blackhole, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
@@ -47,8 +48,11 @@ function newLine(){
     } else if(RiTa.isStopWord(word)){
       image(supermassive, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
     } else {
-      resetCanvas();
-      countInterval = setInterval(drawStar, 2);
+      fill(255);
+      textFont('Georgia');
+      textSize(20);
+      textAlign(CENTER);
+      text("Please enter a valid word", windowWidth / 2, windowHeight / 2);
     }
   }
 }
@@ -60,7 +64,7 @@ function setup() {
   background(22, 12, 41);
   imageMode(CENTER);
   
-  imgWidth = windowWidth / 6;  //width of each image in relation to window size
+  imgWidth = windowWidth / 3;  //width of each image in relation to window size
   imgHeight = imgWidth; // craetes symetrical images
 
   input = createInput();
