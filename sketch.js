@@ -50,9 +50,10 @@ function StarSurprise(){
     } else if(RiTa.isStopWord(word)){
       bg2.image(supermassive, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
     } else {
+      resetCanvas();
       bg2.fill(255);
       bg2.textFont('Georgia');
-      bg2.textSize(20);
+      bg2.textSize(48);
       bg2.textAlign(CENTER);
       bg2.text("Please enter a valid word", windowWidth / 2, windowHeight / 2);
     }
@@ -70,7 +71,7 @@ function setup() {
   bg2.background(0, 0);
 
   imageMode(CENTER);
-  imgWidth = windowWidth / 3;  //width of each image in relation to window size
+  imgWidth =  windowWidth / 2;  //width of each image in relation to window size
   imgHeight = imgWidth; // craetes symetrical images
 
   input = createInput();
@@ -84,43 +85,18 @@ function setup() {
 	enter.position(input.x, input.y + 22);
 	enter.mousePressed(StarSurprise);
 
-  // displayNextImage();
+  
+
 }
-
-// function displayNextImage() { //function to draw the five images in succession along the screen
-//   setTimeout(1)
-  
-//   if (currentIndex >= imgs.length) {
-//     currentIndex = 0;
-//   }
-
-//   totalWidth = ((imgWidth * 5) + 200)
-
-//   let startX = (windowWidth / 10);
-
-//   let x = startX + currentIndex * (imgWidth + spacing);
-
-//   image(imgs[currentIndex], x, windowHeight / 2, imgWidth, imgHeight);
-
-//   currentIndex++;
-  
-//   displayCounter++; // Increment the display counter (number of images on screen)
-
-//   if (displayCounter >= 5) { // Check if it has been called 5 times
-//     setTimeout(resetCanvas, 2000); // Reset the canvas after a delay of 2 seconds
-//     displayCounter = 0; // Reset the display counter
-//   } else {
-//     setTimeout(displayNextImage, 2000);
-//   }
-// }
 
 function resetCanvas() {
   background(22, 12, 41);
-  // displayNextImage(); // Start displaying images again
 }
 
 function draw() {
-// countInterval = setInterval(drawStar, 2); // Draws little stars in the background at an interval
+  imageMode(CENTER);
+  image(bg1, 0, 0);
+  image(bg2, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
 }
 
 function drawStar() { //this will draw the stars randomly
@@ -137,17 +113,17 @@ function windowResized() {
 }
 
 function drawStarShape(x, y, n, outerRadius, innerRadius, rotation) { //this is just the formula to create a star shape
-  noStroke();
-  fill(190);
+  bg1.noStroke();
+  bg1.fill(190);
   let theta = TAU / n;
   beginShape();
   for (let i = 0; i < n; i++) {
     let x1 = x + cos(i * theta + rotation) * outerRadius;
     let y1 = y + sin(i * theta + rotation) * outerRadius;
-    vertex(x1, y1);
+    bg1.vertex(x1, y1);
     let x2 = x + cos((i + 0.5) * theta + rotation) * innerRadius;
     let y2 = y + sin((i + 0.5) * theta + rotation) * innerRadius;
-    vertex(x2, y2);
+    bg1.vertex(x2, y2);
   }
   endShape(CLOSE);
 }
