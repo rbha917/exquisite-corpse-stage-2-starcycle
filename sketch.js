@@ -11,6 +11,8 @@ let input;
 let userLine;
 let answers = [];
 let response;
+let bg1;
+let bg2;
 
 function preload() {
   blackhole = loadImage('images/blackhole.png');
@@ -26,7 +28,7 @@ function preload() {
   imgs.push(supernova);
 }
 
-function newLine(){
+function StarSurprise(){
   resetCanvas();
   userLine = input.value(); //define userLine at top//
   input.value(''); //clears input box//
@@ -34,25 +36,25 @@ function newLine(){
 
   let words = RiTa.tokenize(userLine);//creates an array from the inputs//
 	response = ''; //clears input, define response variable at top//
-  setInterval(drawStar, 20);
+
 	for (x = 0; x < words.length; x++){
     let word = words[x]    
 		if(RiTa.isVerb(word)){
-			image(nebula, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
+			bg2.image(nebula, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
     } else if(RiTa.isNoun(word)) {
-      image(mss, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
+      bg2.image(mss, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
 		} else if(RiTa.isAdverb(word)){
-      image(blackhole, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
+      bg2.image(blackhole, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
     } else if(RiTa.isAdjective(word)){
-      image(supernova, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
+      bg2.image(supernova, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
     } else if(RiTa.isStopWord(word)){
-      image(supermassive, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
+      bg2.image(supermassive, windowWidth / 2, windowHeight / 2, imgWidth, imgHeight);
     } else {
-      fill(255);
-      textFont('Georgia');
-      textSize(20);
-      textAlign(CENTER);
-      text("Please enter a valid word", windowWidth / 2, windowHeight / 2);
+      bg2.fill(255);
+      bg2.textFont('Georgia');
+      bg2.textSize(20);
+      bg2.textAlign(CENTER);
+      bg2.text("Please enter a valid word", windowWidth / 2, windowHeight / 2);
     }
   }
 }
@@ -60,10 +62,14 @@ function newLine(){
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  frameRate(3)
   background(22, 12, 41);
+  frameRate(3)
+  bg1 = createGraphics(windowWidth, windowHeight);
+  bg1.background(22, 12, 41);
+  bg2 = createGraphics(windowWidth, windowHeight);
+  bg2.background(0, 0);
+
   imageMode(CENTER);
-  
   imgWidth = windowWidth / 3;  //width of each image in relation to window size
   imgHeight = imgWidth; // craetes symetrical images
 
@@ -76,37 +82,37 @@ function setup() {
 
   let enter = createButton('ENTER')
 	enter.position(input.x, input.y + 22);
-	enter.mousePressed(newLine);
+	enter.mousePressed(StarSurprise);
 
   // displayNextImage();
 }
 
-function displayNextImage() { //function to draw the five images in succession along the screen
-  setTimeout(1)
+// function displayNextImage() { //function to draw the five images in succession along the screen
+//   setTimeout(1)
   
-  if (currentIndex >= imgs.length) {
-    currentIndex = 0;
-  }
+//   if (currentIndex >= imgs.length) {
+//     currentIndex = 0;
+//   }
 
-  totalWidth = ((imgWidth * 5) + 200)
+//   totalWidth = ((imgWidth * 5) + 200)
 
-  let startX = (windowWidth / 10);
+//   let startX = (windowWidth / 10);
 
-  let x = startX + currentIndex * (imgWidth + spacing);
+//   let x = startX + currentIndex * (imgWidth + spacing);
 
-  image(imgs[currentIndex], x, windowHeight / 2, imgWidth, imgHeight);
+//   image(imgs[currentIndex], x, windowHeight / 2, imgWidth, imgHeight);
 
-  currentIndex++;
+//   currentIndex++;
   
-  displayCounter++; // Increment the display counter (number of images on screen)
+//   displayCounter++; // Increment the display counter (number of images on screen)
 
-  if (displayCounter >= 5) { // Check if it has been called 5 times
-    setTimeout(resetCanvas, 2000); // Reset the canvas after a delay of 2 seconds
-    displayCounter = 0; // Reset the display counter
-  } else {
-    setTimeout(displayNextImage, 2000);
-  }
-}
+//   if (displayCounter >= 5) { // Check if it has been called 5 times
+//     setTimeout(resetCanvas, 2000); // Reset the canvas after a delay of 2 seconds
+//     displayCounter = 0; // Reset the display counter
+//   } else {
+//     setTimeout(displayNextImage, 2000);
+//   }
+// }
 
 function resetCanvas() {
   background(22, 12, 41);
