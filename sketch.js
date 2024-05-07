@@ -65,7 +65,7 @@ function setup() {
   frameRate(3)
   
   imageMode(CENTER);
-  imgWidth =  windowWidth / 2;  //width of each image in relation to window size
+  imgWidth =  windowWidth / 3;  //width of each image in relation to window size
   imgHeight = imgWidth; // craetes symetrical images
 
   input = createInput();
