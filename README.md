@@ -57,10 +57,10 @@ the cycle goes as follows:
 
 ### 🟨 Stage 2
 - Name/Alias: Roshni Bhatti
-- Github account: 
-- Published webpage for stage 2: https://rbha917.github.io/exquisite-corpse-stage-2-starcycle/ 
+- Github account: https://github.com/rbha917 
+- Published webpage for stage 2: https://rbha917.github.io/exquisite-corpse-stage-2-starcycle/
 
-*... comments to be added here*
+*I absolutely loved Cat's take on the first stage of this brief, I found it unique and visually stunning. As I admired it so much, I chose to keep all of the images, colours and patterns the same. I only played around with the sizing of them just to fit the screen better. To incorporate interactivity to this sketch, I have added in an input box that invites the user to enter in a word of their choice. The code then uses a series of RiTa.js functions to determine what type of word it is e.g. verb, noun or adjective and displays one of the star images accordingly. If the user presses the enter button without inputting anything or inputs something the code cannot recognise as a word then the sketch will display an error message asking them to try again with a valid word. My thought process in doing this was that using an input box gives the user a lot of freedom in what they want to do/say but I can still categorise their inputs to display something from them. I wanted the users to experiment with different kinds of words to see the different outputs they could get. I chose to keep Cat's setInterval of drawing stars and apply it to every time the enter button is pressed because as previously mentioned, I loved the way it looked. I thought it was fitting to use it in this manner because then the user is amused and engaged by this animation everytime they press the enter button. Overall, I wanted this sketch to allow the user to be playful and experimental with their choices while seeing some truly beautiful images. Some challenges I came across while making this sketch was the setInterval stars being drawn over the images. I attempted to separate them and the images into different layers using the createGraphics element but in trying to learn and apply it, I found that it was causing me more issues than solutions. Therefore, I decided that, considering time constraints, it was wiser to leave this issue alone. Instead, I opted to decrease the timeframe for when the stars are drawn so that there wouldn't be as many covering the image.*
 
 ### 🟩 Stage 3
 - Name/Alias:

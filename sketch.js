@@ -59,7 +59,6 @@ function StarSurprise(){
   }
 }
 
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(22, 12, 41);
@@ -90,14 +89,12 @@ function StarLoop() {
   countInterval = setInterval(drawStar, 10);
 }
 
-function draw() {
-}
-
 function drawStar() { //this will draw the stars randomly
   drawStarShape(random(0, windowWidth), random(0, windowHeight), 5, 4, 2, 0);
   counter++;
   if (counter >= 150) {
     clearInterval(countInterval);
+    counter = 0;
   }
 }
 
